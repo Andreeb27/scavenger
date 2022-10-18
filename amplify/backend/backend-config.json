@@ -1,46 +1,6 @@
 {
-  "api": {
-    "scavenger": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            }
-          },
-          "additionalAuthenticationProviders": []
-        }
-      }
-    },
-    "AdminQueries": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "scavenger06631177",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "AdminQueriesf7900f71",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ]
-    }
-  },
   "auth": {
-    "scavenger06631177": {
+    "scavenger4ca00eff": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -70,27 +30,12 @@
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "scavenger06631177",
+          "resourceName": "scavenger4ca00eff",
           "attributes": [
             "UserPoolId",
             "AppClientIDWeb",
-            "AppClientID"
-          ]
-        }
-      ]
-    }
-  },
-  "function": {
-    "AdminQueriesf7900f71": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true,
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "scavenger06631177",
-          "attributes": [
-            "UserPoolId"
+            "AppClientID",
+            "IdentityPoolId"
           ]
         }
       ]

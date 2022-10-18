@@ -1,8 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "resourceNameTruncated": "scaven06631177",
-    "userPoolName": "scavenger06631177_userpool_06631177",
+    "identityPoolName": "scavenger4ca00eff_identitypool_4ca00eff",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "scaven4ca00eff",
+    "userPoolName": "scavenger4ca00eff_userpool_4ca00eff",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -14,7 +16,7 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Your verification code",
     "emailVerificationMessage": "Your verification code is {####}",
-    "defaultPasswordPolicy": true,
+    "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
@@ -29,14 +31,14 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "scaven06631177_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "scaven4ca00eff_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "06631177",
-    "resourceName": "scavenger06631177",
-    "authSelections": "userPoolOnly",
+    "sharedId": "4ca00eff",
+    "resourceName": "scavenger4ca00eff",
+    "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [
-      "scavy"
+      "pool"
     ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
@@ -54,16 +56,6 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": [],
-    "userPoolGroups": true,
-    "adminQueries": true,
-    "triggers": {},
-    "hostedUI": false,
-    "adminQueryGroup": "scavy",
-    "parentStack": {
-      "Ref": "AWS::StackId"
-    },
-    "permissions": [],
-    "authProviders": []
+    "dependsOn": []
   }
 }
