@@ -3,6 +3,8 @@ import './App.css';
 import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import CustomAuthentiator from './CustomAuthenticator';
+import Database from './Database'
+import { useState } from 'react';
 
 /* src/App.js */
 const formFields = {
@@ -27,6 +29,8 @@ function App({ signOut, user }) {
      <CustomAuthentiator>
 
      </CustomAuthentiator>
+
+      <Database />
     </>
   );
 }
