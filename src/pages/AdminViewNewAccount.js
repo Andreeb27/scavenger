@@ -21,6 +21,7 @@ export const AdminViewNewAccount = () => {
   const [onSubmitchange,setSubmitchange]= useState(false)
   const [defaultView,setDefaultView]= useState(true)
   const accountsColRef = collection(db, "accounts")
+  
   const addAccount = async (accountName,accountNumber,accountDescription,accountCategory,
     accountSubcategory,userID,order,debit,credit,initialBalance,endingBalance,accountCreation) => {
     
@@ -34,19 +35,19 @@ export const AdminViewNewAccount = () => {
 const DefaultView=(props)=>{
   if(defaultView){
     <AdminViewNewAcct style={{position:'relative' , left:'30em'}}
-    overrides={{'TextField34533251':{onChange:onSubmitAccountName},
-    'TextField34533250':{onChange:onSubmitAccountNumber},
-    'TextField34533245':{onChange:onSubmitAccountDescription},
-    'TextField34533247':{onChange:onSubmitAccountCategory},
-    'TextField34533248':{onChange:onSubmitAccountSubCategory},
-    'TextField34692999':{onChange:onSubmitUserID},
-    'Button34533256':{onClick:onNextButton},
+    overrides={{'TextField34533251' : {onChange : (event) => {setAccountName(event.target.value)}},
+    'TextField34533250' : {onChange : (event) => {setAccountNumber(event.target.value) }},
+    'TextField34533245': {onChange  : (event) => {setAccountDescription(event.target.value)}},
+    'TextField34533247' : {onChange : (event) => {setAccountCategory(event.target.value)}},
+    'TextField34533248':{onChange   : (event) => {setAccountSubCategory(event.target.value)}},
+    'TextField34692999':{onChange   : (event) => {setUserID(event.target.value)}},
+    'Button34533256':{onClick : addAccountToDB},
+    // 'Button34533256':{onClick:onNextButton},
    }}/> 
   }
-  
-
-
 }
+
+// 'Button351912604'   :{onClick : () => {addToDB()}}
 
   /**
    * 
@@ -142,6 +143,11 @@ const DefaultView=(props)=>{
       accountCreation)}
       console.log("add accounts worked");
   }
+
+  const addAccountToDB = async () => {
+    await addDoc(accountsColRef, {acountName : accountName, accountNumber : accountNumber, accountDescription : accountDescription,
+      accountCategory : accountCategory, accountSubcategory : accountSubcategory, userID : userID})
+  }
   
   return (
     <>
@@ -170,6 +176,8 @@ const DefaultView=(props)=>{
         'Button351912604'   :{onClick : () => {addToDB()}}
 
       }}/>
+
+      <button onClick = {addAccountToDB}>A Button</button>
      {/*'Button351912604':{onClick:addDoc*/}
       </div>
     </>

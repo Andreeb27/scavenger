@@ -3,13 +3,13 @@ import { getFirestore } from '@firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAnc184AoqIsozOEhyeT5bA2Y7gWTZhrig",
-    authDomain: "test-db-84827.firebaseapp.com",
-    projectId: "test-db-84827",
-    storageBucket: "test-db-84827.appspot.com",
-    messagingSenderId: "139979415778",
-    appId: "1:139979415778:web:e2dc7de86785f0047cfebb"
-  };
+  apiKey: "AIzaSyD6CgqmSY4-LMVCRZbNuLCB0ZPbUZu_5eg",
+  authDomain: "app-domain-dcd1d.firebaseapp.com",
+  projectId: "app-domain-dcd1d",
+  storageBucket: "app-domain-dcd1d.appspot.com",
+  messagingSenderId: "762030217594",
+  appId: "1:762030217594:web:5865c97bffe41862f15ec3"
+}
   
 
   const app = initializeApp(firebaseConfig);
