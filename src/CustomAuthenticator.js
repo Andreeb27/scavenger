@@ -51,17 +51,36 @@ function elevateAccount(Username,accountLevel,Method){
   })
 }
 
-function TestApiCall(){
+function TestApiCall(username,method){
   //put url of api in the fetch
   fetch(" https://qdkw8owsn3.execute-api.us-east-2.amazonaws.com/default",{
     method: 'POST',
     headers: {'Content-Type':"application/json"},
     body : JSON.stringify({
-      
-        "AttributesToGet":  [],
-        "UserPoolId": "us-east-2_yq4Klaavu"
-     
-  //empty body
+        "UserPoolId": "us-east-2_yq4Klaavu",
+        "Username" : username,
+        "method": method
+    })
+  }).then(function(response){
+
+    console.log(response)
+
+    return response.json();
+
+  }).then(function(JsonData){
+    console.log(JsonData);
+    setUserData(JsonData)
+  })
+}
+function GetUser(username,method){
+  //put url of api in the fetch
+  fetch(" https://qdkw8owsn3.execute-api.us-east-2.amazonaws.com/default",{
+    method: 'POST',
+    headers: {'Content-Type':"application/json"},
+    body : JSON.stringify({
+        "UserPoolId": "us-east-2_yq4Klaavu",
+        "Username" : username,
+        "method": method
     })
   }).then(function(response){
 
@@ -105,6 +124,9 @@ const services={
   <button onClick={signOut}>Sign Out</button>
 
   <button onClick={() => TestApiCall()}>TEST BUTTON</button>
+  <button onClick={() => GetUser(user.username,"single")}>Get Single User</button>
+  <button onClick={() => GetUser(user.username,"all")}>Get All Users</button>
+
   <button onClick={() => {console.log(userData)}}>LogData</button>
   
   <button onClick={() => getUserGroup(user.username)}>Get groups</button>
